@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/RF_project/app/src/main/res/layout/activity_add_equipment.xml" value="0.3333333333333333" />
         <entry key="..\:/RF_project/app/src/main/res/layout/activity_add_user.xml" value="0.3591485507246377" />
+        <entry key="..\:/RF_project/app/src/main/res/layout/activity_add_work_field.xml" value="0.3333333333333333" />
         <entry key="..\:/RF_project/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/RF_project/app/src/main/res/layout/activity_operator_first_screen.xml" value="0.33" />
         <entry key="..\:/RF_project/app/src/main/res/layout/activity_worker_first_screen.xml" value="0.33" />

@@ -21,4 +21,17 @@ public class OperatorFirstScreen extends AppCompatActivity {
         Intent i = new Intent(OperatorFirstScreen.this,AddUser.class);
         startActivity(i);
     }
+
+    public void onAddEqClick(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,AddEquipment.class);
+        startActivity(i);
+    }
+
+    public void onAddWfClick(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,AddWorkField.class);
+        startActivity(i);
+    }
+
 }
