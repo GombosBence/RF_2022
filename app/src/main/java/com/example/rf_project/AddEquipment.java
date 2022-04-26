@@ -21,9 +21,13 @@ import java.util.Map;
 public class AddEquipment extends AppCompatActivity {
 
     EditText eqNameEt;
+    EditText normalTimeEt;
+    EditText maintanceEt;
+    EditText instructionEt;
     EditText eqReqEt;
     Button addEquipment;
     FirebaseDatabase fDatabase;
+    TextView errorMsgEt;
     int id;
 
 
@@ -34,23 +38,44 @@ public class AddEquipment extends AppCompatActivity {
 
         eqNameEt = findViewById(R.id.eqNameEt);
         eqReqEt = findViewById(R.id.eqReqEt);
+        normalTimeEt = findViewById(R.id.normalTimeEt);
+        maintanceEt = findViewById(R.id.maintanceEt);
+        instructionEt = findViewById(R.id.instructionEt);
         addEquipment = findViewById(R.id.addEquipmentBt);
         fDatabase = FirebaseDatabase.getInstance();
+        errorMsgEt = findViewById(R.id.errorEt);
 
         addEquipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(eqNameEt.getText().toString().isEmpty() || eqReqEt.getText().toString().isEmpty())
+                if(eqNameEt.getText().toString().isEmpty() || eqReqEt.getText().toString().isEmpty() || normalTimeEt.getText().toString().isEmpty()
+                || maintanceEt.getText().toString().isEmpty() || instructionEt.getText().toString().isEmpty())
                 {
                     return;
                 }
-
-
-                DatabaseReference dbRef = fDatabase.getReference("Equipments");
-                dbRef.addValueEventListener(new ValueEventListener() {
+                DatabaseReference dbWfRef = fDatabase.getReference("WorkFields");
+                dbWfRef.child(eqReqEt.getText().toString()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        id = (int) snapshot.getChildrenCount() + 1;
+                        if(snapshot.exists())
+                        {
+                            errorMsgEt.setText("");
+                            DatabaseReference dbRef = fDatabase.getReference("Equipments");
+
+                            Map<String, Object> equipmentInfo = new HashMap<>();
+                            equipmentInfo.put("Equipment Requirement", eqReqEt.getText().toString());
+                            equipmentInfo.put("Normal Time(h)", normalTimeEt.getText().toString());
+                            equipmentInfo.put("Maintance period(h)", maintanceEt.getText().toString());
+                            equipmentInfo.put("Instruction", instructionEt.getText().toString());
+
+                            dbRef.child(eqNameEt.getText().toString()).setValue(equipmentInfo);
+
+
+                        }
+                        if(!snapshot.exists())
+                        {
+                            errorMsgEt.setText("No such workfield in the database");
+                        }
                     }
 
                     @Override
@@ -58,13 +83,6 @@ public class AddEquipment extends AppCompatActivity {
 
                     }
                 });
-
-                Map<String, Object> equipmentInfo = new HashMap<>();
-                equipmentInfo.put("Equipment Name", eqNameEt.getText().toString());
-                equipmentInfo.put("Equipment Requirement", eqReqEt.getText().toString());
-                String stringId = String.valueOf(id);
-
-                dbRef.child(stringId).setValue(equipmentInfo);
 
             }
         });

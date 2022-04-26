@@ -22,7 +22,6 @@ public class AddWorkField extends AppCompatActivity {
     EditText workfieldNameEt;
     Button addWorkfield;
     FirebaseDatabase fDatabase;
-    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +40,7 @@ public class AddWorkField extends AppCompatActivity {
                     return;
                 }
                 DatabaseReference dbRef = fDatabase.getReference("WorkFields");
-                dbRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        id = (int) snapshot.getChildrenCount() + 1;
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                Map<String, Object> workfieldInfo = new HashMap<>();
-                workfieldInfo.put("workfield name", workfieldNameEt.getText().toString());
-
-                String stringId = String.valueOf(id);
-                dbRef.child(stringId).setValue(workfieldInfo);
+                dbRef.child(workfieldNameEt.getText().toString()).setValue(" ");
 
             }
         });
