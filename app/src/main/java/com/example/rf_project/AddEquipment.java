@@ -15,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,14 +62,19 @@ public class AddEquipment extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.exists())
                         {
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
                             errorMsgEt.setText("");
                             DatabaseReference dbRef = fDatabase.getReference("Equipments");
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(new Date());
+                            c.add(Calendar.DATE, Integer.parseInt(maintanceEt.getText().toString()));
 
                             Map<String, Object> equipmentInfo = new HashMap<>();
                             equipmentInfo.put("Equipment Requirement", eqReqEt.getText().toString());
                             equipmentInfo.put("Normal Time(h)", normalTimeEt.getText().toString());
-                            equipmentInfo.put("Maintance period(h)", maintanceEt.getText().toString());
+                            equipmentInfo.put("Maintance Period(d)", maintanceEt.getText().toString());
                             equipmentInfo.put("Instruction", instructionEt.getText().toString());
+                            equipmentInfo.put("Next Maintance", format.format(c.getTime()));
 
                             dbRef.child(eqNameEt.getText().toString()).setValue(equipmentInfo);
 
