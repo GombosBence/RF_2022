@@ -12,10 +12,10 @@
         android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:onClick="onAddClick"
         android:layout_marginRight="280dp"
-        android:backgroundTint="@color/black"/>
+        android:backgroundTint="@color/black"
+        android:onClick="onLogOut"
+        android:text="Logout" />
 
     <Button
         android:id="@+id/addUser"

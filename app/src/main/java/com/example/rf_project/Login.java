@@ -94,10 +94,12 @@ public class Login extends AppCompatActivity {
                 {
                     startActivity(new Intent(Login.this,OperatorFirstScreen.class));
                     finish();
-                }else
+                }else if (snapshot.getValue(String.class).equals("0"))
                 {
                     startActivity(new Intent(Login.this,WorkerFirstScreen.class));
                     finish();
+                } else {
+                    Toast.makeText(Login.this, "Hiba lépett fel, az admin value nem megfelelö", Toast.LENGTH_LONG).show();
                 }
             }
 
