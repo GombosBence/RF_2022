@@ -67,6 +67,12 @@ public class OperatorFirstScreen extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onAddTaClick(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,AddTask.class);
+        startActivity(i);
+    }
+
     public void automaticTasks(View v)
     {
         DatabaseReference dbRef = fDb.getReference("Equipments");

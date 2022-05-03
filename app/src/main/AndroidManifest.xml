@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RF_project">
         <activity
+            android:name=".AddTask"
+            android:exported="true" />
+        <activity
             android:name=".AddWorkField"
             android:exported="true" />
         <activity
