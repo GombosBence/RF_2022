@@ -49,6 +49,12 @@ public class OperatorFirstScreen extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onLogOut(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,Login.class);
+        startActivity(i);
+    }
+
     public void onAddEqClick(View v)
     {
         Intent i = new Intent(OperatorFirstScreen.this,AddEquipment.class);
@@ -58,6 +64,12 @@ public class OperatorFirstScreen extends AppCompatActivity {
     public void onAddWfClick(View v)
     {
         Intent i = new Intent(OperatorFirstScreen.this,AddWorkField.class);
+        startActivity(i);
+    }
+
+    public void onAddTaClick(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,AddTask.class);
         startActivity(i);
     }
 
