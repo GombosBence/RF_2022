@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RF_project">
         <activity
+            android:name=".ListViewAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".AssignTasksToWorker"
+            android:exported="true" />
+        <activity
             android:name=".AddTask"
             android:exported="true" />
         <activity

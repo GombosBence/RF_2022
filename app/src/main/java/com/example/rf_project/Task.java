@@ -1,32 +1,46 @@
 package com.example.rf_project;
 
 public class Task {
-    String Description, Duration, Equipment, Requirement, Scheduled, Solved;
+    String description, duration, equipment, requirement, scheduled, solved, id;
+
+    public Task(String des, String du, String eq, String req, String sche, String solv, String _id){
+
+        description = des;
+        duration = du;
+        equipment = eq;
+        requirement = req;
+        scheduled = sche;
+        solved = solv;
+        id = _id;
+
+    }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public String getDuration() {
-        return Duration;
+        return duration;
     }
 
     public String getEquipment() {
-        return Equipment;
+        return equipment;
     }
 
     public String getRequirement() {
-        return Requirement;
+        return requirement;
     }
 
     public String getScheduled() {
-        return Scheduled;
+        return scheduled;
     }
 
     public String getSolved() {
-        return Solved;
+        return solved;
     }
-    public String toString(){
-        return this.Description +", "+this.Equipment + ", Solved:" + this.Solved;
+
+    public String getId() {
+        return id;
     }
+
 }

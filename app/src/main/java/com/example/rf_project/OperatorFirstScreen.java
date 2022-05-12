@@ -72,6 +72,11 @@ public class OperatorFirstScreen extends AppCompatActivity {
         Intent i = new Intent(OperatorFirstScreen.this,AddTask.class);
         startActivity(i);
     }
+    public void onAssignClick(View v)
+    {
+        Intent i = new Intent(OperatorFirstScreen.this,AssignTasksToWorker.class);
+        startActivity(i);
+    }
 
     public void automaticTasks(View v)
     {
