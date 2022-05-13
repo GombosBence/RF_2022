@@ -3,6 +3,7 @@ package com.example.rf_project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -64,8 +65,10 @@ public class AssignTasksToWorker extends AppCompatActivity {
 
                     UserInfo uf = new UserInfo(name,workfield,ds.getKey(),hours );
 
-                    workers.add(uf);
-                    populateSpinner();
+                    if(!workfield.equals("operator")) {
+                        workers.add(uf);
+                        populateSpinner();
+                    }
 
                 }
             }
@@ -107,7 +110,7 @@ public class AssignTasksToWorker extends AppCompatActivity {
 
                 selected = (UserInfo) workerSpinner.getSelectedItem();
                 listAdapter = new ListViewAdapter(AssignTasksToWorker.this,tasks,((UserInfo) workerSpinner.getSelectedItem()).getId(),
-                        ((UserInfo) workerSpinner.getSelectedItem()).getHours());
+                        ((UserInfo) workerSpinner.getSelectedItem()).getHours(), ((UserInfo) workerSpinner.getSelectedItem()).getName());
                 taskList.setAdapter(listAdapter);
                 dbRef2.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -154,6 +157,12 @@ public class AssignTasksToWorker extends AppCompatActivity {
         ArrayAdapter<UserInfo> adapter = new ArrayAdapter<UserInfo>(this,android.R.layout.simple_spinner_item, workers);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         workerSpinner.setAdapter(adapter);
+    }
+
+    public void onAssignedClick(View v)
+    {
+        Intent i = new Intent(AssignTasksToWorker.this,AssignedTasks.class);
+        startActivity(i);
     }
 
 }

@@ -36,8 +36,9 @@ public class ListViewAdapter extends ArrayAdapter<Task> {
     FirebaseDatabase fDatabase;
     String selectedUserId;
     String selectedUserHours;
+    String selectedUserName;
 
-    public ListViewAdapter(Context context, ArrayList<Task> items, String selectedid, String hours){
+    public ListViewAdapter(Context context, ArrayList<Task> items, String selectedid, String hours, String name){
 
 
         super(context, R.layout.list_row,items);
@@ -46,6 +47,7 @@ public class ListViewAdapter extends ArrayAdapter<Task> {
         fDatabase = FirebaseDatabase.getInstance();
         selectedUserId = selectedid;
         selectedUserHours = hours;
+        selectedUserName = name;
 
     }
     @NonNull
@@ -82,12 +84,31 @@ public class ListViewAdapter extends ArrayAdapter<Task> {
                 dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        DatabaseReference dbref2 = fDatabase.getReference("Tasks");
+                        dbref2.child(id).child("Scheduled").setValue("true");
+
+                        DatabaseReference dbref3 = fDatabase.getReference("Workers");
+                        int selectedH = Integer.parseInt(selectedUserHours);
+                        int taskDur = Integer.parseInt(list.get(position).getDuration());
+                        int newHours = selectedH + taskDur;
+                        selectedUserHours=String.valueOf(newHours);
+                        dbref3.child(selectedUserId).child("Hours").setValue(String.valueOf(newHours));
+
+
                         String uniqueID = UUID.randomUUID().toString();
                         Map<String, Object> assignmentInfo = new HashMap<>();
                         assignmentInfo.put("Worker_ID", selectedUserId);
                         assignmentInfo.put("Task_ID", id);
+                        assignmentInfo.put("Assignment State", "pending");
+                        assignmentInfo.put("Worker's name", selectedUserName);
+                        assignmentInfo.put("Description", list.get(position).getDescription());
+                        assignmentInfo.put("Equipment", list.get(position).getEquipment());
+                        assignmentInfo.put("Duration", list.get(position).getDuration());
 
                         dbRef.child(uniqueID).setValue(assignmentInfo);
+
+
                     }
 
                     @Override
@@ -96,14 +117,6 @@ public class ListViewAdapter extends ArrayAdapter<Task> {
                     }
                 });
 
-                DatabaseReference dbref2 = fDatabase.getReference("Tasks");
-                dbref2.child(id).child("Scheduled").setValue("true");
-
-                DatabaseReference dbref3 = fDatabase.getReference("Workers");
-                int selectedH = Integer.parseInt(selectedUserHours);
-                int taskDur = Integer.parseInt(list.get(position).getDuration());
-                int newHours = selectedH + taskDur;
-                dbref3.child(selectedUserId).child("Hours").setValue(String.valueOf(newHours));
 
 
             }

@@ -117,6 +117,7 @@ public class AddUser extends AppCompatActivity {
                                         userInfo.put("FullName", nameEt.getText().toString());
                                         userInfo.put("Email", emailEt.getText().toString());
                                         userInfo.put("WorkField", workFieldEt.getText().toString());
+                                        userInfo.put("Hours", "0");
 
                                         if (adminRbtn.isChecked()) {
                                             userInfo.put("Admin", "1");
