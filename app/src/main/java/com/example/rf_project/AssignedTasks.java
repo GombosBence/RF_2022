@@ -24,11 +24,13 @@ public class AssignedTasks extends AppCompatActivity {
     Button pendingBtn;
     Button acceptedBtn;
     Button deniedBtn;
+    Button solvedBtn;
     FirebaseDatabase fDatabase;
     ArrayList<AssignmentInfo> allAl;
     ArrayList<AssignmentInfo> pendingAl;
     ArrayList<AssignmentInfo> acceptedAl;
     ArrayList<AssignmentInfo> deniedAl;
+    ArrayList<AssignmentInfo> solvedAl;
     ListView assignmentList;
     AssignmentListViewAdapter adapter;
 
@@ -47,7 +49,9 @@ public class AssignedTasks extends AppCompatActivity {
         pendingAl = new ArrayList<>();
         acceptedAl = new ArrayList<>();
         deniedAl = new ArrayList<>();
+        solvedAl = new ArrayList<>();
         assignmentList = findViewById(R.id.TaskList);
+        solvedBtn = findViewById(R.id.solvedBtn);
 
        adapter = new AssignmentListViewAdapter(AssignedTasks.this,allAl);
        assignmentList.setAdapter(adapter);
@@ -85,8 +89,13 @@ public class AssignedTasks extends AppCompatActivity {
                     {
                         deniedAl.add(new AssignmentInfo(taskId, workerId, assignmentInfo, workerName, description, equipment, assignmentId, duration));
                     }
+                    if(assignmentInfo.equals("solved"))
+                    {
+                        solvedAl.add(new AssignmentInfo(taskId, workerId, assignmentInfo, workerName, description, equipment, assignmentId, duration));
+                    }
                 }
                 adapter.notifyDataSetChanged();
+                assignmentList.setAdapter(adapter);
             }
 
             @Override
@@ -120,6 +129,12 @@ public class AssignedTasks extends AppCompatActivity {
     public void onDeniedClick (View v)
     {
         AssignmentListViewAdapter adapter = new AssignmentListViewAdapter(AssignedTasks.this,deniedAl);
+        assignmentList.setAdapter(adapter);
+    }
+
+    public void onSolvedClick (View v)
+    {
+        AssignmentListViewAdapter adapter = new AssignmentListViewAdapter(AssignedTasks.this,solvedAl);
         assignmentList.setAdapter(adapter);
     }
 }

@@ -84,6 +84,11 @@ public class AssignmentListViewAdapter extends ArrayAdapter<AssignmentInfo> {
 
                         DatabaseReference dbRef3 = fDatabase.getReference("Tasks");
                         dbRef3.child(list.get(position).getTaskId()).child("Scheduled").setValue("false");
+                        if(list.get(position).getAssignmentState().equals("solved"))
+                        {
+                            dbRef3.child(list.get(position).getTaskId()).removeValue();
+                        }
+
 
                         dbRef2.child(list.get(position).getWorkerId()).child("Hours").setValue(String.valueOf(newDur));
                         list.remove(position);

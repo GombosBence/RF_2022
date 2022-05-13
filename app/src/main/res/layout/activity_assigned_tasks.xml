@@ -18,7 +18,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:onClick="onAllClick"
-            android:text="All" />
+            android:text="All"
+            android:textSize="9sp"/>
 
         <Button
             android:id="@+id/pendingBtn"
@@ -27,7 +28,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:onClick="onPendingClick"
-            android:text="Pendiing" />
+            android:text="Pending"
+            android:textSize="9sp"/>
 
         <Button
             android:id="@+id/deniedBtn"
@@ -36,7 +38,8 @@
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:onClick="onDeniedClick"
-            android:text="Denied" />
+            android:text="Denied"
+            android:textSize="9sp"/>
 
         <Button
             android:id="@+id/acceptedBtn"
@@ -45,7 +48,18 @@
             android:layout_weight="1"
             android:backgroundTint="@color/black"
             android:onClick="onAcceptedClick"
-            android:text="Accepted" />
+            android:text="Accepted"
+            android:textSize="8sp"/>
+
+        <Button
+            android:id="@+id/solvedBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onSolvedClick"
+            android:text="Solved"
+            android:textSize="9sp"/>
 
     </LinearLayout>
 
