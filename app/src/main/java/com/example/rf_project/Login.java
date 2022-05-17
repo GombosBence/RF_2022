@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseDatabase fDatabase;
     TextView errorMessageTv;
+    public static String workfieldval;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         checkUserAccessLevel(authResult.getUser().getUid());
+                        checkWorkfield(authResult.getUser().getUid());
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -102,7 +104,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Hiba lépett fel, az admin value nem megfelelö", Toast.LENGTH_LONG).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -110,12 +111,22 @@ public class Login extends AppCompatActivity {
         });
 
 
-
     }
-    /*public void temp(View v)
-    {
-        startActivity(new Intent(Login.this,OperatorFirstScreen.class));
-        finish();
-    }*/
+    private void checkWorkfield(String uid) {
+
+        DatabaseReference dbRef = fDatabase.getReference("Workers");
+        dbRef.child(uid).child("WorkField").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                workfieldval = snapshot.getValue(String.class).toString();
+                //Toast.makeText(Login.this, workfieldval, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RF_project">
         <activity
+            android:name=".EditTask"
+            android:exported="true" />
+        <activity
             android:name=".AssignmentListViewAdapter"
             android:exported="true" />
         <activity

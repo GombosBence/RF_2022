@@ -14,6 +14,7 @@ public class Task {
         id = _id;
 
     }
+    public Task() {}
 
     public String getDescription() {
         return description;
