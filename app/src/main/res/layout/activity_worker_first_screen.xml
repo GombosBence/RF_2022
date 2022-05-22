@@ -7,11 +7,15 @@
     android:orientation="vertical"
     tools:context=".WorkerFirstScreen">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/assignmentBt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tasks" />
+        android:layout_height="45dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:backgroundTint="@color/black"
+        android:onClick="onAssignClick"
+        android:text="My Assignments" />
 
     <ListView
         android:id="@+id/TaskList"

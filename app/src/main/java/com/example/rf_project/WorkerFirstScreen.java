@@ -33,6 +33,7 @@ public class WorkerFirstScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worker_first_screen);
+       /*
         TaskList=findViewById(R.id.TaskList);
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
         ref=FirebaseDatabase.getInstance().getReference("Tasks");
@@ -66,6 +67,16 @@ public class WorkerFirstScreen extends AppCompatActivity {
 
             }
         });
+
+        */
+    }
+
+
+
+    public void onAssignClick(View v)
+    {
+        Intent i = new Intent(WorkerFirstScreen.this, WorkerAssignmentList.class);
+        startActivity(i);
     }
 
 }

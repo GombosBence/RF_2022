@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AssignedTasks">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/allBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onAllClick"
+            android:text="All"
+            android:textSize="9sp"/>
+
+        <Button
+            android:id="@+id/pendingBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onPendingClick"
+            android:text="Pending"
+            android:textSize="9sp"/>
+
+        <Button
+            android:id="@+id/deniedBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onDeniedClick"
+            android:text="Denied"
+            android:textSize="9sp"/>
+
+        <Button
+            android:id="@+id/acceptedBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onAcceptedClick"
+            android:text="Accepted"
+            android:textSize="8sp"/>
+
+        <Button
+            android:id="@+id/solvedBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="onSolvedClick"
+            android:text="Solved"
+            android:textSize="9sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#a9a9a9"
+        android:text="" />
+
+    <ListView
+        android:id="@+id/TaskList"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

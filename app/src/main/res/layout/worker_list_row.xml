@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="125dp"
+    android:background="#d3d3d3">
+
+    <TextView
+        android:id="@+id/workerNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: "
+        android:textSize="15sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/equipmentNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/workerNameTv"
+        android:text="Equipment: "
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/descriptionTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/equipmentNameTv"
+        android:text="Description: "
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/assignmentStateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assignment State: "
+        android:layout_below="@id/descriptionTv"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/deniedReasonTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@id/assignmentStateTv"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/acceptBtn"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:textSize="11sp"
+        android:text="Accept"
+        android:layout_below="@+id/assignmentStateTv"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="35dp"/>
+
+    <Button
+        android:id="@+id/denieBtn"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/assignmentStateTv"
+        android:text="Denie"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/black"
+        android:layout_toRightOf="@id/acceptBtn"
+        android:textSize="11sp"/>
+
+    <Button
+        android:id="@+id/markSolvedBtn"
+        android:layout_width="116dp"
+        android:layout_height="45dp"
+        android:text="mark as solved"
+        android:layout_toRightOf="@id/denieBtn"
+        android:layout_below="@+id/assignmentStateTv"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="@color/black"
+        android:textSize="10sp"/>
+
+</RelativeLayout>
