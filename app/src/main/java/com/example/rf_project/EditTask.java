@@ -2,7 +2,9 @@ package com.example.rf_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -35,4 +37,14 @@ public class EditTask extends AppCompatActivity {
         cancelBtn = findViewById(R.id.cancelBtn);
         arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList2);
     }
+
+
+
+    public void oncancelBtnclick(View v)
+    {
+        Intent i = new Intent(EditTask.this,WorkerFirstScreen.class);
+        startActivity(i);
+    }
+
+
 }
