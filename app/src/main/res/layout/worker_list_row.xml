@@ -68,11 +68,11 @@
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_below="@+id/assignmentStateTv"
-        android:text="Denie"
         android:layout_marginTop="35dp"
-        android:backgroundTint="@color/black"
         android:layout_toRightOf="@id/acceptBtn"
-        android:textSize="11sp"/>
+        android:backgroundTint="@color/black"
+        android:text="DENY"
+        android:textSize="11sp" />
 
     <Button
         android:id="@+id/markSolvedBtn"
